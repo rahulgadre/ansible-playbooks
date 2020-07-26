@@ -1,0 +1,22 @@
+---
+-  name: Moving a VM from one host to the other
+   hosts: localhost
+
+
+   tasks:
+
+   - name: Include the variables file for the login details
+     include_vars: /etc/ansible/vars/vmvars.yml
+
+   - name: Perform vMotion of a VM
+     vmware_vmotion:
+       hostname: "{{ cred['hostname'] }}"
+       username: "{{ cred['username'] }}"
+       password: "{{ cred['password'] }}"
+       validate_certs: no
+       vm_name: "{{ item }}"
+       destination_host: '10.129.103.14'
+     delegate_to: localhost
+     with_items:
+       - perf-vm-centos
+

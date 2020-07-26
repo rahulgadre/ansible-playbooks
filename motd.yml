@@ -1,0 +1,10 @@
+---
+
+- hosts: AO
+
+  tasks:
+  - name: Copy motd file to AO VM
+    copy:
+      src: /etc/ansible/motd
+      dest: /home/aoadmin/motd
+      mode: '0644'

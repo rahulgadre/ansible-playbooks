@@ -1,0 +1,33 @@
+---
+-  name: Setting NTP servers on ESXi hosts
+   hosts: localhost
+
+
+   tasks:
+
+   - name: Include the variables file for the login details
+     include_vars: /etc/ansible/vars/vmvars.yml
+
+   - name: Configure NTP servers for an ESXi Host
+     vmware_host_ntp:
+       hostname: "{{ cred['hostname'] }}"
+       username: "{{ cred['username'] }}"
+       password: "{{ cred['password'] }}"
+       esxi_hostname: "10.129.103.17"
+       validate_certs: no
+       state: present
+       ntp_servers:
+           - 135.9.1.2
+           - 135.9.219.5
+     delegate_to: localhost
+
+   - name: Start ntpd service
+     vmware_host_service_manager:
+       hostname: "{{ cred['hostname'] }}"
+       username: "{{ cred['username'] }}"
+       password: "{{ cred['password'] }}"
+       esxi_hostname: "10.129.103.17"
+       validate_certs: no
+       service_name: ntpd
+       state: start
+     delegate_to: localhost
