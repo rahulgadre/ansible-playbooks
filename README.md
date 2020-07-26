@@ -1,4 +1,4 @@
-#### Ansible-VMware Playbook
+#### Ansible-VMware Playbooks
 
 This repository contains my Ansible playbooks which I created to manage a VMware environment.
 
