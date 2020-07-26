@@ -1,6 +1,6 @@
 ---
 
 cred:
-  hostname: 10.129.103.5
-  username: administrator@vsphere.local
-  password: Avaya123$
+  hostname: vCenter IP or vCenter FQDN
+  username: vCenter Username
+  password: vCenter Password

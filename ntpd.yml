@@ -13,12 +13,12 @@
        hostname: "{{ cred['hostname'] }}"
        username: "{{ cred['username'] }}"
        password: "{{ cred['password'] }}"
-       esxi_hostname: "10.129.103.17"
+       esxi_hostname: "host IP or hostname"
        validate_certs: no
        state: present
        ntp_servers:
-           - 135.9.1.2
-           - 135.9.219.5
+           - NTP_Server_IP_1
+           - NTP_Server_IP_2
      delegate_to: localhost
 
    - name: Start ntpd service
@@ -26,7 +26,7 @@
        hostname: "{{ cred['hostname'] }}"
        username: "{{ cred['username'] }}"
        password: "{{ cred['password'] }}"
-       esxi_hostname: "10.129.103.17"
+       esxi_hostname: "host IP or hostname"
        validate_certs: no
        service_name: ntpd
        state: start

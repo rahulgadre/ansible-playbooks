@@ -2,7 +2,6 @@
 -  name: Moving a VM from one host to the other
    hosts: localhost
 
-
    tasks:
 
    - name: Include the variables file for the login details
@@ -15,8 +14,8 @@
        password: "{{ cred['password'] }}"
        validate_certs: no
        vm_name: "{{ item }}"
-       destination_host: '10.129.103.14'
+       destination_host: 'host IP or hostname'
      delegate_to: localhost
      with_items:
-       - perf-vm-centos
+       - name_of_VM
 

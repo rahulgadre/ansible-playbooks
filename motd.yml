@@ -1,9 +1,10 @@
 ---
 
-- hosts: AO
+- name: create a motd file and copy it to a remote host 
+  hosts: Specify host groups or hosts
 
   tasks:
-  - name: Copy motd file to AO VM
+  - name: Copy motd file to a VM
     copy:
       src: /etc/ansible/motd
       dest: /home/aoadmin/motd
