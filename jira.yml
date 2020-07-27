@@ -1,0 +1,30 @@
+---
+-  name: Get an issue and add comment to a JIRA
+   hosts: localhost
+
+
+   tasks:
+
+   - name: Include the variables file for the login details
+     include_vars: /etc/ansible/vars/jiravars.yml
+
+   - name: Get an issue
+     jira:
+       uri: "{{ cred['server'] }}"
+       username: "{{ cred['username'] }}"
+       password: "{{ cred['password'] }}"
+       project: Myproject
+       operation: fetch
+       validate_certs: no
+       issue: Myproject-123
+     register: issue
+
+   - name: Comment on issue
+     jira:
+       uri: "{{ cred['server'] }}"
+       username: "{{ cred['username'] }}"
+       password: "{{ cred['password'] }}"
+       validate_certs: no
+       operation: comment
+       issue: "{{ issue.meta.key }}"
+       comment: This is a test comment made using Ansible.
