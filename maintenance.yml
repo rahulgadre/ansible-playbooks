@@ -1,0 +1,21 @@
+---
+
+- name: Enter/Exit a host from maintenance mode
+  hosts: localhost
+
+
+  tasks:
+
+  - name: Include the variables file for the login details
+    include_vars: /etc/ansible/vars/vmvars.yml
+
+
+  - name: Exiting a host from maintenance mode
+    vmware_maintenancemode:
+      hostname: "{{ cred['hostname'] }}"
+      username: "{{ cred['username'] }}"
+      password: "{{ cred['password'] }}"
+      esxi_hostname: "host IP or hostname"
+      validate_certs: no
+      state: absent
+    delegate_to: localhost

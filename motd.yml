@@ -7,5 +7,5 @@
   - name: Copy motd file to a VM
     copy:
       src: /etc/ansible/motd
-      dest: /home/aoadmin/motd
+      dest: /home/myuser/motd
       mode: '0644'

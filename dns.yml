@@ -1,0 +1,27 @@
+
+---
+
+- name: Update DNS records in Infoblox DNS using Ansible
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+
+  tasks:
+    - name: Include the variables file and provide the login details
+      include_vars: vars.yml
+
+    - name: Add DNS entries
+      nios_host_record:
+        name: "{{ item.hostname }}"
+        ipv4:
+          - address: "{{ item.IP }}"
+        state: present
+        comment: Assigned to domain\username
+        provider:
+          host: "IP_address of Infoblox DNS server"
+          username: "{{ cred['uname'] }}"
+          password: "{{ cred['pass'] }}"
+      with_items:
+        - { hostname: 'FQDN_1', IP: 'IP_address_1' }
+        - { hostname: 'FQDN_2', IP: 'IP_address_2' }
