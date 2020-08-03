@@ -1,6 +1,6 @@
 #### Ansible-VMware Playbooks
 
-This repository contains my Ansible playbooks which I created to manage a VMware environment.
+This repository contains my Ansible playbooks which I created to manage VMware, JIRA, and networking environments.
 
 Dependencies:
 - pyvmomi
