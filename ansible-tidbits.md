@@ -1,4 +1,4 @@
-### This contains important information about the basics of Ansible and Ansible systax
+### This file contains important information about the basics of Ansible and Ansible systax
 
 - {start:end} – to create multiple hosts or IPs with less typing.
 - List modules – ansible-doc module –l  , ansible-doc copy – info about copy module.
@@ -33,11 +33,12 @@ Tags let you run playbooks on specific plays only instead of running the whole p
 
 #### How to define dependencies:
 
+``` yml
 --- 
 dependencies:
   - { role: common, some_parameter: 3 }
   - { role: apache, apache_port: 80 }
-
+```
 
 #### Set local variable and call a role in the main playbook:
 
